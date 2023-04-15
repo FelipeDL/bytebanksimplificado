@@ -10,17 +10,19 @@ public class CadastroUsuario {
 	
 	private int senha;
 	
-	public Autenticador getAutentica() {
+	private AberturaConta abertura;
+	
+	public ExtratoConta2 getAutentica() {
 		return autentica;
 	}
 
 
-	public void setAutentica(Autenticador autentica) {
+	public void setAutentica(ExtratoConta2 autentica) {
 		this.autentica = autentica;
 	}
 
 
-	private Autenticador autentica;
+	private ExtratoConta2 autentica;
 	
 
 	public String getNome() {
@@ -51,11 +53,24 @@ public class CadastroUsuario {
 	public void setSenha(int senha) {
 		this.senha = senha;
 	}
+	
+	
+
+	public AberturaConta getAbertura() {
+		return abertura;
+	}
+
+
+	public void setAbertura(AberturaConta abertura) {
+		this.abertura = abertura;
+	}
 
 
 	public void cadastroUsuario (){
 		
 		Scanner leitorTeclado = new Scanner(System.in);
+		
+		CadastroUsuario cadastro = new CadastroUsuario();
 		
 		System.out.println("Digite seu nome:");
 		

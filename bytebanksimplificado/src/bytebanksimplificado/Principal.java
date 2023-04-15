@@ -2,7 +2,7 @@ package bytebanksimplificado;
 
 import java.util.Scanner;
 
-public class TestaClasses {
+public class Principal {
 	
 	
 	public static void main(String[] args) {

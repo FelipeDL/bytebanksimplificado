@@ -6,29 +6,21 @@ public class ApresentacaoOpcoes {
 	
 	
 	
+//	private List<Conta> contasCadastradas;
 	
+
 	
 	
 	public void menuOpcoes() {
 		
 		Scanner leitorTeclado = new Scanner(System.in);
 		
-		CadastroUsuario cadastro = new CadastroUsuario();
-		
-		ExtratoConta extratoCadastro = new ExtratoConta();
-		
-		Autenticador autenticaCadastro = new Autenticador();
 		
 		AberturaConta abertura = new AberturaConta();
 		
-		
-		
-		
-		String login;
-		String nome;
-		int senha;
+
 		int varLoop = 1;
-		
+
 		
 		while(varLoop == 1) {
 			
@@ -50,34 +42,27 @@ public class ApresentacaoOpcoes {
 			switch(opcao) {
 			
 			case 1:
-				
-				cadastro.cadastroUsuario();
-				
+	
 				abertura.abrirConta();
-			
-				
-			
-			
-		
+
 				break;
 				
 			case 2:
+		
+				ExtratoConta2 teste = new ExtratoConta2();
 				
-				ExtratoConta extratoCad = new ExtratoConta();
+				teste.autenticador(abertura.getContasCadastradas());
+
 				
-				extratoCad.setCadastro(cadastro);
-				extratoCad.setAbertura(abertura);
-				
-				extratoCad.extrato(extratoCad.getCadastro().getSenha(), extratoCad.getCadastro().getLogin());				
 				break;
 				
 			case 3:
 				
 				Sacar sacar = new Sacar();
-				sacar.setConta(abertura);
-				sacar.setCadastro(cadastro);
 				
-				sacar.sacar(sacar.getCadastro().getLogin(), sacar.getCadastro().getSenha());
+				sacar.sacar(abertura.getContasCadastradas());
+
+				
 				break;
 				
 			case 4:
@@ -86,17 +71,14 @@ public class ApresentacaoOpcoes {
 				
 				deposito.setConta(abertura);
 				
-				deposito.depositar(abertura);
+				deposito.depositar(abertura.contasCadastradas);
 				
 				break;
 			
 			case 0:
 				varLoop = 0;
 				System.out.println("Programa Finalizado");
-				
 			
-				
-				
 				
 			}
 			
@@ -105,14 +87,8 @@ public class ApresentacaoOpcoes {
 			
 			
 			
-			
-			
-			
-			
-			
-			
-			
 		}
+		
 		
 		
 		

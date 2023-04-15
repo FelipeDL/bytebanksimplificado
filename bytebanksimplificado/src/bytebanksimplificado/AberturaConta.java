@@ -5,31 +5,128 @@ public class AberturaConta extends Conta {
 	
 	private int numeroDaConta;
 	
-	private String tipo1 = "Corrente";
+	private String tipoDeConta = "default";
 	
-	private String tipo2 = "Poupança";
+	private double saldoAbertura;
 
-	private String tipoDeConta;
+	private CadastroUsuario cadastroUsuario;
 	
-	private double saldo;
+	private AberturaConta abertura;
+	
+	public  List<AberturaConta> contasCadastradas;
+	
+	// Testa  para colocar o cadastro aqui
+	
+	private String nome;
+	
+	private String login = "default";
+	
+	private int senha;
+	
+	public String getNome() {
+		return nome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public String getLogin() {
+		return login;
+	}
+
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+
+	public int getSenha() {
+		return senha;
+	}
+
+
+	public void setSenha(int senha) {
+		this.senha = senha;
+	}
+
+
+	// Método origainal da classe
+	public AberturaConta() {
+
+		this.contasCadastradas = new ArrayList<>();
+	}
 	
 	
 	public void abrirConta() {
 		
 		Scanner leitorTeclado = new Scanner(System.in);
 		Random random = new Random();
+		AberturaConta abertura = new AberturaConta();
 		
-		System.out.println("Tipo de Conta: ");
+		// Métodos trazidoa das classe Cadastr para teste
 		
-		this.tipoDeConta = leitorTeclado.nextLine();
+		System.out.println("Tipo de Conta: Corrente/Poupança ");
+		
+		String tipo = leitorTeclado.nextLine();
+		
+		this.tipoDeConta = tipo.toLowerCase();
+		
+		System.out.println("Digite seu nome:");
+		
+		String nome = leitorTeclado.nextLine();
+		
+		abertura.setNome(nome.toUpperCase());
+		
+		this.nome = nome;
+		
+		System.out.println("Crie um login:");
+		
+		
+		
+		String login = leitorTeclado.nextLine();
+		
+		abertura.setLogin(login);
+		
+		this.login = login;
+		
+		System.out.println("Crie uma senha numérica: ");
+		
+		int senha = leitorTeclado.nextInt();
+		
+		abertura.setSenha(senha);
+		
+		
+		this.senha = senha;
+		
+		
+		// Métodos originais a partir daqui
+		
+		
+		String tipo1 = "corrente";
+		
+		String tipo2 = "poupança";
 		
 		if(this.tipoDeConta.equals(tipo1)) {
 			
 			this.numeroDaConta = random.nextInt(1000);
 			
-			this.tipoDeConta = this.tipo1;
+			abertura.setNumeroDaConta(numeroDaConta);
 			
-			this.saldo = 0;
+			this.tipoDeConta = tipo1;
+			
+			abertura.setTipoDeConta(tipoDeConta);
+			
+			this.saldoAbertura = 50;
+			
+			abertura.setSaldoAbertura(saldoAbertura);
+			
+			abertura.setCadastroUsuario(cadastroUsuario);
+			
+			contasCadastradas.add(abertura);
+			
 			
 			System.out.println("Conta Corrente aberta");
 			
@@ -37,9 +134,20 @@ public class AberturaConta extends Conta {
 			
 			this.numeroDaConta = random.nextInt(1000);
 			
-			this.tipoDeConta = this.tipo2;
+			abertura.setNumeroDaConta(numeroDaConta);
 			
-			this.saldo = 0;
+			this.tipoDeConta = tipo2;
+			
+			abertura.setTipoDeConta(tipoDeConta);
+			
+			this.saldoAbertura = 50;
+			
+			abertura.setSaldoAbertura(saldoAbertura);
+			
+			abertura.setCadastroUsuario(cadastroUsuario);
+			
+			contasCadastradas.add(abertura);
+			
 			
 			System.out.println("Conta Poupança aberta");
 			
@@ -47,29 +155,9 @@ public class AberturaConta extends Conta {
 			System.out.println("Tipo de Conta Inválido");
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		System.out.println("Cliente cadastrado");
+		System.out.println("********************************");
+			
 		
 	}
 
@@ -84,25 +172,6 @@ public class AberturaConta extends Conta {
 	}
 
 
-	public String getTipo1() {
-		return tipo1;
-	}
-
-
-	public void setTipo1(String tipo1) {
-		this.tipo1 = tipo1;
-	}
-
-
-	public String getTipo2() {
-		return tipo2;
-	}
-
-
-	public void setTipo2(String tipo2) {
-		this.tipo2 = tipo2;
-	}
-
 
 	public String getTipoDeConta() {
 		return tipoDeConta;
@@ -113,8 +182,56 @@ public class AberturaConta extends Conta {
 		this.tipoDeConta = tipoDeConta;
 	}
 	
+		
+
+
+	public CadastroUsuario getCadastroUsuario() {
+		return cadastroUsuario;
+	}
+
+
+	public void setCadastroUsuario(CadastroUsuario cadastroUsuario) {
+		this.cadastroUsuario = cadastroUsuario;
+	}
+
+
+	public double getSaldoAbertura() {
+		return saldoAbertura;
+	}
+
+
+	public void setSaldoAbertura(double saldoAbertura) {
+		this.saldoAbertura = saldoAbertura;
+	}
 	
 	
+
+	@Override
+	public String toString() {  
+		
+		
+		return "Cliente: " + this.getNome();
+	}
+
+
+	public List<AberturaConta> getContasCadastradas() {
+		return contasCadastradas;
+	}
+
+
+	public void setContasCadastradas(List<AberturaConta> contasCadastradas) {
+		this.contasCadastradas = contasCadastradas;
+	}
+
+
+	public AberturaConta getAbertura() {
+		return abertura;
+	}
+
+
+	public void setAbertura(AberturaConta abertura) {
+		this.abertura = abertura;
+	}
 	
 	
 	

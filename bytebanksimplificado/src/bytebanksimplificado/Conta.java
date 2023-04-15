@@ -1,5 +1,8 @@
 package bytebanksimplificado;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // não se pode mais instanciar objetos dessa classe, pq é abstrata.
 
 public abstract class Conta {
@@ -9,6 +12,8 @@ public abstract class Conta {
 	private int numeroDaConta = 0;
 	
 	private String tipoDeConta;
+	
+	private List<Conta> contasCadastradas;
 
 	public double getSaldo() {
 		return saldo;
@@ -34,7 +39,18 @@ public abstract class Conta {
 		this.tipoDeConta = tipoDeConta;
 	}
 	
+
+	public void cadastraConta(AberturaConta conta) {
+		
+		
+		
 	
+		
+	
+		
+		
+		
+	}
 
 	
 

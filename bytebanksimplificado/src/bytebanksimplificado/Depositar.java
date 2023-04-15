@@ -1,5 +1,10 @@
 package bytebanksimplificado;
 
+import java.util.List;
+
+// Classe usada para adicionar valor (depósito) na conta criada; - Resolvida.
+
+
 import java.util.Scanner;
 
 public class Depositar {
@@ -8,7 +13,7 @@ public class Depositar {
 	
 	private CadastroUsuario cadastro;
 	
-	private int valor;
+	private double valor;
 	
 	
 
@@ -29,7 +34,7 @@ public class Depositar {
 		this.cadastro = cadastro;
 	}
 
-	public int getValor() {
+	public double getValor() {
 		return valor;
 	}
 
@@ -37,7 +42,7 @@ public class Depositar {
 		this.valor = valor;
 	}
 
-	public void depositar(AberturaConta conta) {
+	public void depositar(List<AberturaConta> contasCadastradas) {
 		
 		Scanner leitorTeclado = new Scanner(System.in);
 		
@@ -45,18 +50,34 @@ public class Depositar {
 		
 		int numeroDaConta = leitorTeclado.nextInt();
 		
-		if(conta.getNumeroDaConta() == numeroDaConta) {
-			
-			System.out.println("Informe o valor do DEPÓSITO: ");
-			int valor = leitorTeclado.nextInt();
-			conta.setSaldo(valor);
-			
-			System.out.println("Depósito Realizado com Sucesso!");
-		} else {
-			
-			System.out.println("Conta Inválida");
-		}
 		
+		
+		for (AberturaConta teste2 : contasCadastradas) {
+			
+			if(teste2.getNumeroDaConta() == numeroDaConta) {
+				
+				System.out.println("Informe o valor do DEPÓSITO: ");
+				int valor = leitorTeclado.nextInt();
+				double valor1 = teste2.getSaldoAbertura();
+				
+				teste2.setSaldoAbertura(valor + valor1);
+			
+				System.out.println("Depósito Realizado com Sucesso!");
+				
+			} else {
+				
+				System.out.println("Conta Inválida");
+			}
+			
+		}
+	
+	
+	
+	
+	
+	
+	
+
 	
 	}
 }

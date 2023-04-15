@@ -1,77 +1,64 @@
 package bytebanksimplificado;
 
+import java.util.List;
+
+// Classe para realizar uma retirada do saldoAbertura; Resolvido.
+
 import java.util.Scanner;
 
 public class Sacar {
 	
-	private CadastroUsuario cadastro;
 	
-	private AberturaConta conta;
+	private List<AberturaConta> cadastro;
 	
 	private int senha;
 	
 	private String login;
 	
 
-	public AberturaConta getConta() {
-		return conta;
-	}
-
-
-	public void setConta(AberturaConta conta) {
-		this.conta = conta;
-	}
-
-	
-	public CadastroUsuario getCadastro() {
-		return cadastro;
-	}
-
-
-	public void setCadastro(CadastroUsuario cadastro) {
-		this.cadastro = cadastro;
-	}
-
-
-	public boolean sacar(String login, int senha) {
+	public boolean sacar(List<AberturaConta> contasCadastradas) {
 		
 		Scanner leitorTeclado = new Scanner(System.in);
-			
-		System.out.println("Login: ");
+	
+		System.out.println("Digite seu Login: ");
 		
-		this.login = leitorTeclado.nextLine();
+		String l = leitorTeclado.next();
+		
+		System.out.println("Digite uma senha: ");
+		int s = leitorTeclado.nextInt();
+		
+		for (AberturaConta teste2 : contasCadastradas) {
 			
-		System.out.println("Senha: ");
-		this.senha = leitorTeclado.nextInt();
-			
-		Autenticador a = new Autenticador();
-			
-		if(a.autenticador(senha, login, cadastro)) {
-			System.out.println("Digite o valor que deseja SACAR: ");
-			int valor = leitorTeclado.nextInt();			
-			if(conta.getSaldo() >= valor) {
+			if(teste2.getLogin().equals(l) && teste2.getSenha() == s) {
 				
-				double saldo = conta.getSaldo();
-				
-				conta.setSaldo(saldo - valor);
-				
-				System.out.println("Saque realizado com sucesso");
-				
-			} else {
-				System.out.println("Saldo insuficiente");
-			}
+				System.out.println("Digite o valor que deseja SACAR: ");
+				double valor = leitorTeclado.nextDouble();			
+				if(teste2.getSaldoAbertura() >= valor) {
+					
+					double saldo = teste2.getSaldoAbertura();
+					
+					teste2.setSaldoAbertura(saldo - valor);
+					
+					System.out.println("Saque realizado com sucesso");
+					
+					
+				} else {
+					System.out.println("Saldo insuficiente");
+				}
 			
 				return true;
+			} else {
 				
-		} else {
-				return false;
-			}	
+				
+			}
+				
+			
+		}
+		System.out.println("Falha de autenticação: Verifique a senha/login");
+		
+		return false;
+		
 	}
-	
-	
-	
-	
-	
 	
 	
 	
